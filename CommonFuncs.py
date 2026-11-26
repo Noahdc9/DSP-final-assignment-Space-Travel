@@ -1,8 +1,9 @@
 import numpy as np
-
 #default case for our project.
-type time_axis = np.ndarray
-type data = np.ndarray
+
+#for pydocs
+time_axis = np.ndarray
+data = np.ndarray
 
 def sineGen(bF: float, Fs: int = 44100) -> tuple[np.ndarray, np.ndarray]:
     """Sinusoid generation for continous playback.
@@ -66,8 +67,9 @@ def sawtoothGen(bF: float, Fs: int = 44100) -> tuple[np.ndarray, np.ndarray]:
     
     return data, time_axis
 
-type newData = np.ndarray
-def ADSRGen(data: np.array[int], ADSR, toneState: int, Fs: int = 44100)-> list[int]:
+#for pydocs
+newData = np.ndarray
+def ADSRGen(data: np.ndarray, ADSR, toneState: int, Fs: int = 44100)-> list[int]:
     """Applies a ADSR to the signal
 
     Args:
@@ -117,9 +119,10 @@ def ADSRGen(data: np.array[int], ADSR, toneState: int, Fs: int = 44100)-> list[i
     
     return data
 
-type fourierData = np.ndarray
-type frequencyBin = np.ndarray
-def fourierHandle(data: np.array[int], Fs = 44100, windowing: bool = False, chunks: int = 42) -> tuple[np.ndarray, np.ndarray]: # tuple[fourierData,frequencyBin]:# 42 because its the answer to everything
+#for pydocs
+fourierData = np.ndarray
+frequencyBin = np.ndarray
+def fourierHandle(data: np.ndarray, Fs = 44100, windowing: bool = False, chunks: int = 42) -> tuple[np.ndarray, np.ndarray]: # tuple[fourierData,frequencyBin]:# 42 because its the answer to everything
     """idk
 
     Args:
@@ -153,8 +156,9 @@ def fourierHandle(data: np.array[int], Fs = 44100, windowing: bool = False, chun
     
    
 ##FILTERIIINGG
-type filteredData = np.ndarray
-def filtering(data: np.array[int], freq: np.array[int], type: str,order: int, cutoff: int, upperCutoff: int = 0)->list[int]:
+#for pydocs
+filteredData = np.ndarray
+def filtering(data: np.ndarray, freq: np.ndarray, type: str,order: int, cutoff: int, upperCutoff: int = 0)->list[int]:
     """Takes non-DB convered, fourier-transformed, normalized data and the corresponding frequency components and filters it either using a low or highpass.
     Ensure that freq and data are same lengths; otherwise filtermask will pad the data, and you will have issues later.
     
@@ -192,7 +196,7 @@ def filtering(data: np.array[int], freq: np.array[int], type: str,order: int, cu
 
 
 
-def bandPass(data: np.array[int], freq: np.array[int], lowerBandFreq: int, upperBandFreq: int, Q: int) -> list[int]:
+def bandPass(data: np.ndarray, freq: np.ndarray, lowerBandFreq: int, upperBandFreq: int, Q: int) -> list[int]:
     """Takes data, frequency bins in fourier and lower/upper bandfrequencies, aswell as a Q (sharpness) and returns filtered data.
 
     Args:
@@ -212,7 +216,7 @@ def bandPass(data: np.array[int], freq: np.array[int], lowerBandFreq: int, upper
     filteredData = data * filterMask
     return filteredData
     
-def allPass(data: np.array[int], freq: np.array[int], type: str = "linear", center: float = 1_000.0, width: int = 500) -> list[int]:
+def allPass(data: np.ndarray, freq: np.ndarray, type: str = "linear", center: float = 1_000.0, width: int = 500) -> list[int]:
     """An all pass filter
 
     Args:
